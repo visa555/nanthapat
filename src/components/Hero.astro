@@ -1,0 +1,106 @@
+---
+interface SocialLink {
+  platform: string;
+  url: string;
+}
+
+interface Props {
+  title: string;
+  tagline?: string;
+  image: string;
+  video?: string;
+  videoSpeed?: number;
+  size?: "full" | "compact";
+  socialLinks?: SocialLink[];
+}
+
+const { title, tagline, image, video, videoSpeed = 1, size = "full", socialLinks = [] } = Astro.props;
+
+const iconByPlatform: Record<string, string> = {
+  facebook: "fa-facebook-f",
+  youtube: "fa-youtube",
+  dribbble: "fa-dribbble",
+  behance: "fa-behance",
+};
+
+const sizeClass = size === "full" ? "ph-full ph-full-m ph-cap-xxlg" : "ph-cap-lg";
+---
+
+<!-- ========================
+	///// Begin page header /////
+	============================= -->
+<div id="page-header" class={`${sizeClass} ph-image-parallax ph-caption-parallax`}>
+  {video ? (
+    <div class="ph-video ph-video-cover-2">
+      <div class="ph-video-inner">
+        <video loop muted autoplay playsinline preload="metadata" poster={image}>
+          <source src="/assets/vids/placeholder.mp4" data-src={video} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  ) : null}
+  {video && videoSpeed !== 1 && (
+    <script is:inline define:vars={{ videoSpeed }}>
+      document.querySelectorAll("#page-header .ph-video video").forEach((v) => {
+        v.playbackRate = videoSpeed;
+        v.addEventListener("loadeddata", () => {
+          v.playbackRate = videoSpeed;
+        });
+      });
+    </script>
+  )}
+  {!video && (
+    <div class="ph-image ph-image-cover-2">
+      <div class="ph-image-inner">
+        <img src={image} alt="Image" />
+      </div>
+    </div>
+  )}
+
+  <div class="page-header-inner tt-wrap">
+    <div class="ph-caption">
+      <div class="ph-caption-inner">
+        <h1 class="ph-caption-title">{title}</h1>
+        {tagline && <div class="ph-caption-description max-width-700">{tagline}</div>}
+      </div>
+      <!-- /.ph-caption-inner -->
+    </div>
+    <!-- /.ph-caption -->
+  </div>
+  <!-- /.page-header-inner -->
+
+  {socialLinks.length > 0 && (
+    <div class="ph-social">
+      <ul>
+        {socialLinks.map((link) => (
+          <li>
+            <a href={link.url} class="tt-magnetic-item" target="_blank" rel="noopener">
+              <i class={`fa-brands ${iconByPlatform[link.platform] ?? "fa-link"}`}></i>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  {size === "full" && (
+    <div class="tt-scroll-down">
+      <a href="#tt-page-content" class="tt-scroll-down-inner tt-magnetic-item" data-offset="0">
+        <div class="tt-scrd-icon"></div>
+        <svg viewBox="0 0 500 500">
+          <defs>
+            <path
+              d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
+              id="textcircle"
+            ></path>
+          </defs>
+          <text dy="30">
+            <textPath xlink:href="#textcircle">Scroll to Explore - Scroll to Explore -</textPath>
+          </text>
+        </svg>
+      </a>
+      <!-- /.tt-scroll-down-inner -->
+    </div>
+  )}
+</div>
+<!-- End page header -->

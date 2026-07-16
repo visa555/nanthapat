@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+
+const items = await getCollection("gallery");
+const galleryGroup = "gallery-nanthapat";
+---
+
+<!-- =======================
+	///// Begin tt-section /////
+	============================ -->
+<div id="gallery" class="tt-section">
+  <div class="tt-section-inner tt-wrap max-width-1800">
+    <!-- Begin tt-Heading -->
+    <div class="tt-heading tt-heading-lg tt-heading-center margin-bottom-100">
+      <h2 class="tt-heading-title tt-text-reveal">Gallery</h2>
+    </div>
+    <!-- End tt-Heading -->
+
+    <!-- Begin tt-Gallery -->
+    <div class="tt-gallery ttga-hover">
+      <!-- Begin tt-Grid -->
+      <div class="tt-grid ttgr-layout-3 ttgr-gap-2">
+        <!-- Begin tt-Grid items wrap -->
+        <div class="tt-grid-items-wrap isotope-items-wrap">
+          {items.map((item) => (
+            <div class="tt-grid-item isotope-item">
+              <div class="ttgr-item-inner">
+                {item.data.type === "image" && (
+                  <a
+                    href={item.data.image}
+                    class="tt-gallery-item"
+                    data-cursor="View"
+                    data-fancybox={galleryGroup}
+                    data-caption={item.data.caption}
+                  >
+                    <div class="tt-gallery-item-inner">
+                      <div class="tt-gallery-image-wrap tt-anim-zoomin">
+                        <figure class="tt-gallery-image ttgr-height">
+                          <img src={item.data.image} loading="lazy" alt="image" />
+                        </figure>
+                      </div>
+                    </div>
+                  </a>
+                )}
+
+                {item.data.type === "video" && (
+                  <a
+                    href={item.data.sourceUrl}
+                    class="tt-gallery-item"
+                    data-cursor="Play"
+                    data-fancybox={galleryGroup}
+                    data-caption={item.data.caption}
+                  >
+                    <div class="tt-gallery-item-inner">
+                      <div class="tt-gallery-image-wrap tt-anim-zoomin">
+                        <figure class="tt-gallery-video-wrap ttgr-height">
+                          <video class="tt-gallery-video" loop muted preload="metadata" poster={item.data.image}>
+                            <source src="/assets/vids/placeholder.mp4" data-src={item.data.sourceUrl} type="video/mp4" />
+                          </video>
+                        </figure>
+                      </div>
+                    </div>
+                  </a>
+                )}
+
+                {(item.data.type === "youtube" || item.data.type === "vimeo") && (
+                  <a
+                    href={item.data.sourceUrl}
+                    class="tt-gallery-item"
+                    data-cursor="Play"
+                    data-fancybox={galleryGroup}
+                    data-caption={item.data.caption}
+                  >
+                    <div class="tt-gallery-item-inner">
+                      <div class="tt-gallery-image-wrap tt-anim-zoomin">
+                        <figure class="tt-gallery-image ttgr-height">
+                          <img src={item.data.image} loading="lazy" alt="image" />
+                        </figure>
+                      </div>
+                    </div>
+                  </a>
+                )}
+              </div>
+              <!-- /.ttgr-item-inner -->
+            </div>
+          ))}
+        </div>
+        <!-- End tt-Grid items wrap -->
+      </div>
+      <!-- End tt-Grid -->
+    </div>
+    <!-- End tt-Gallery -->
+  </div>
+  <!-- /.tt-section-inner -->
+</div>
+<!-- End tt-section -->

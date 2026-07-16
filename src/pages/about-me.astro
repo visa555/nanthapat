@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CompetitionList from "../components/CompetitionList.astro";
+import settings from "../content/settings.json";
+---
+
+<BaseLayout
+  title="About Me | Nanthapat Itunes"
+  description="รู้จักน้องไอจูน นันทพัทธ์ อำนาจเกียรติกุล นักกีตาร์ไฟฟ้าดาวรุ่งวัย 11 ปีจากโรงเรียนทับทอง พร้อมรวมผลงานรางวัลการแข่งขัน"
+  ogImage={settings.aboutPhoto}
+>
+  <Hero title="About Me" image={settings.aboutPhoto} size="compact" />
+
+  <div id="tt-page-content">
+    <!-- =======================
+			///// Begin tt-section /////
+			============================ -->
+    <div class="tt-section padding-top-xlg-140 padding-bottom-xlg-120">
+      <div class="tt-section-inner tt-wrap">
+        <div class="tt-row">
+          <div class="tt-col-lg-3">
+            <!-- Begin tt-image -->
+            <div class="tt-image tti-border-radius tti-portrait margin-bottom-40">
+              <figure>
+                <img src={settings.aboutPhoto} class="tt-anim-zoomin" loading="lazy" alt="Image" />
+              </figure>
+            </div>
+            <!-- End tt-image -->
+
+            <div class="tt-text-uppercase margin-top-30 tt-text-reveal">
+              นันทพัทธ์ อำนาจเกียรติกุล<br />
+              Electric Guitar Solo
+            </div>
+          </div>
+          <!-- /.tt-col -->
+
+          <div class="tt-col-lg-1 padding-top-30"></div>
+          <!-- /.tt-col -->
+
+          <div class="tt-col-lg-8 tt-align-self-center">
+            <div class="text-md font-500 tt-text-reveal">
+              {settings.aboutText}
+            </div>
+
+            <a href="/contact/" class="tt-btn tt-btn-outline margin-top-40 tt-magnetic-item tt-anim-fadeinup">
+              <span data-hover="Get In Touch">Get In Touch</span>
+            </a>
+          </div>
+          <!-- /.tt-col -->
+        </div>
+        <!-- /.tt-row -->
+      </div>
+      <!-- /.tt-section-inner -->
+    </div>
+    <!-- End tt-section -->
+
+    <CompetitionList />
+  </div>
+</BaseLayout>

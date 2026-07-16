@@ -1,0 +1,79 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "settings"
+    label: "ตั้งค่าเว็บไซต์"
+    files:
+      - file: "src/content/settings.json"
+        label: "ข้อมูลทั่วไป"
+        name: "settings"
+        fields:
+          - { name: "heroTitle", label: "ชื่อ (Hero)", widget: "string" }
+          - { name: "heroTagline", label: "แท็กไลน์", widget: "text" }
+          - { name: "heroImage", label: "รูปพื้นหลัง Hero", widget: "image" }
+          - {
+              name: "heroVideo",
+              label: "วิดีโอพื้นหลัง Hero (ถ้ามี จะแสดงแทนรูปด้านบน)",
+              widget: "file",
+              required: false,
+            }
+          - {
+              name: "heroVideoSpeed",
+              label: "ความเร็ววิดีโอ (1 = ปกติ, 0.75 = ช้าลง, 1.5 = เร็วขึ้น)",
+              widget: "number",
+              value_type: "float",
+              default: 1,
+              required: false,
+            }
+          - { name: "aboutPhoto", label: "รูปแนะนำตัว", widget: "image" }
+          - { name: "aboutText", label: "ข้อความแนะนำตัว", widget: "text" }
+          - { name: "email", label: "อีเมล", widget: "string" }
+          - { name: "phone", label: "เบอร์โทร", widget: "string", required: false }
+          - name: "socialLinks"
+            label: "โซเชียล"
+            widget: "list"
+            fields:
+              - {
+                  name: "platform",
+                  label: "แพลตฟอร์ม",
+                  widget: "select",
+                  options: ["facebook", "youtube", "dribbble", "behance"],
+                }
+              - { name: "url", label: "ลิงก์", widget: "string" }
+
+  - name: "competitions"
+    label: "รายการแข่งขัน"
+    folder: "src/content/competitions"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - { name: "name", label: "ชื่อรายการ", widget: "string" }
+      - { name: "year", label: "ปี", widget: "number", value_type: "int" }
+      - { name: "award", label: "รางวัลที่ได้รับ", widget: "string" }
+      - { name: "image", label: "รูปภาพ", widget: "image" }
+
+  - name: "gallery"
+    label: "แกลเลอรี"
+    folder: "src/content/gallery"
+    create: true
+    fields:
+      - {
+          name: "type",
+          label: "ประเภท",
+          widget: "select",
+          options: ["image", "video", "youtube", "vimeo"],
+        }
+      - { name: "image", label: "รูปภาพ/ปกวิดีโอ", widget: "image" }
+      - {
+          name: "sourceUrl",
+          label: "ลิงก์วิดีโอ (ถ้ามี)",
+          widget: "string",
+          required: false,
+          hint: "จำเป็นสำหรับประเภท video / youtube / vimeo",
+        }
+      - { name: "caption", label: "คำบรรยาย", widget: "string", required: false }

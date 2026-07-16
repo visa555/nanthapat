@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+
+const competitions = (await getCollection("competitions")).sort(
+  (a, b) => b.data.year - a.data.year,
+);
+---
+
+<!-- =======================
+	///// Begin tt-section /////
+	============================ -->
+<div id="competition" class="tt-section padding-top-xlg-140 border-top">
+  <div class="tt-section-inner tt-wrap">
+    <div class="tt-row">
+      <div class="tt-col-xl-8">
+        <!-- Begin tt-Heading -->
+        <div class="tt-heading tt-heading-xxxlg">
+          <h3 class="tt-heading-subtitle tt-text-reveal">รวมผลงานรางวัล</h3>
+          <h2 class="tt-heading-title tt-text-reveal">competition</h2>
+        </div>
+        <!-- End tt-Heading -->
+      </div>
+      <!-- /.tt-col -->
+    </div>
+    <!-- /.tt-row -->
+  </div>
+  <!-- /.tt-section-inner -->
+</div>
+<!-- End tt-section -->
+
+<!-- =======================
+	///// Begin tt-section /////
+	============================ -->
+<div class="tt-section">
+  <div class="tt-section-inner max-width-2200">
+    <!-- Begin portfolio compact list -->
+    <div class="tt-portfolio-compact-list pcl-caption-hover pcl-image-hover">
+      <div class="pcli-inner">
+        {competitions.map((entry) => (
+          <div class="pcli-item tt-anim-fadeinup">
+            <div class="pcli-item-inner">
+              <div class="pcli-col pcli-col-image">
+                <div class="pcli-image">
+                  <img src={entry.data.image} loading="lazy" alt={entry.data.name} />
+                </div>
+              </div>
+              <!-- /.pcli-col -->
+
+              <div class="pcli-col pcli-col-count">
+                <div class="pcli-count"></div>
+              </div>
+              <!-- /.pcli-col -->
+
+              <div class="pcli-col pcli-col-caption">
+                <div class="pcli-caption">
+                  <h2 class="pcli-title">{entry.data.name}</h2>
+                  <div class="pcli-categories">
+                    <div class="pcli-category">{entry.data.year}</div>
+                    <div class="pcli-category">{entry.data.award}</div>
+                  </div>
+                  <!-- /.pcli-categories -->
+                </div>
+                <!-- /.pcli-caption -->
+              </div>
+              <!-- /.pcli-col -->
+            </div>
+            <!-- /.pcli-item-inner -->
+          </div>
+        ))}
+      </div>
+      <!-- /.pcli-inner -->
+    </div>
+    <!-- End portfolio compact list -->
+  </div>
+  <!-- /.tt-section-inner -->
+</div>
+<!-- End tt-section -->

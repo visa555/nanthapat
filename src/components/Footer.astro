@@ -1,0 +1,87 @@
+---
+import settings from "../content/settings.json";
+
+const iconByPlatform: Record<string, string> = {
+  facebook: "fa-facebook-f",
+  youtube: "fa-youtube",
+  dribbble: "fa-dribbble",
+  behance: "fa-behance",
+};
+---
+
+<!-- ======================
+	///// Begin tt-footer /////
+	=========================== -->
+<footer id="tt-footer" class="border-top">
+  <div class="tt-footer-inner tt-wrap">
+    <div class="tt-row">
+      <div class="tt-col-xl-4 tt-col-sm-6">
+        <div class="tt-footer-widget">
+          <h5 class="tt-footer-widget-heading">Sitemap</h5>
+          <ul class="tt-footer-widget-list">
+            <li><a href="/" class="tt-link">Home</a></li>
+            <li><a href="/about-me/" class="tt-link">About Me</a></li>
+            <li><a href="/contact/" class="tt-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.tt-col -->
+
+      <div class="tt-col-xl-4 tt-col-sm-6">
+        <div class="tt-footer-widget">
+          <h5 class="tt-footer-widget-heading">Contact</h5>
+          <ul class="tt-footer-widget-list">
+            <li>
+              <a href={`mailto:${settings.email}`} class="tt-link">{settings.email}</a>
+            </li>
+            {settings.phone && (
+              <li>
+                <a href={`tel:${settings.phone}`} class="tt-link">{settings.phone}</a>
+              </li>
+            )}
+            <li>
+              <div class="tt-social-buttons">
+                <ul>
+                  {settings.socialLinks.map((link) => (
+                    <li>
+                      <a href={link.url} class="tt-magnetic-item" target="_blank" rel="noopener">
+                        <i class={`fa-brands ${iconByPlatform[link.platform] ?? "fa-link"}`}></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.tt-col -->
+
+      <div class="tt-col-xl-4 tt-col-sm-6 tt-justify-content-xl-end">
+        <div class="tt-footer-widget">
+          <ul class="tt-footer-widget-list">
+            <li>
+              <div class="tt-footer-logo">
+                <a href="/" class="tt-magnetic-item">
+                  <img src="/assets/img/logo-white.png" class="tt-logo-light" loading="lazy" alt="Logo" />
+                  <img src="/assets/img/logo-black.png" class="tt-logo-dark" loading="lazy" alt="Logo" />
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="tt-footer-copyright">
+                © <span class="tt-copyright-year"></span>{" "}
+                <a href="/" class="tt-link" target="_blank" rel="nofollow noopener">Nanthapat.com</a><br />
+                All Rights Reserved
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.tt-col -->
+    </div>
+    <!-- /.tt-row -->
+  </div>
+  <!-- /.tt-section-inner -->
+</footer>
+<!-- End tt-footer -->

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import CompetitionList from "../components/CompetitionList.astro";
+import Gallery from "../components/Gallery.astro";
+import settings from "../content/settings.json";
+---
+
+<BaseLayout
+  title="Nanthapat Itunes | นักกีตาร์ไฟฟ้าดาวรุ่งวัย 11 ปี"
+  description="เว็บไซต์อย่างเป็นทางการของน้องไอจูน นันทพัทธ์ อำนาจเกียรติกุล นักกีตาร์ไฟฟ้าดาวรุ่งวัย 11 ปีจากประเทศไทย รวมผลงาน รางวัลการแข่งขัน และแกลเลอรีภาพ/วิดีโอ"
+  ogImage={settings.heroImage}
+>
+  <Hero
+    title={settings.heroTitle}
+    tagline={settings.heroTagline}
+    image={settings.heroImage}
+    video={settings.heroVideo}
+    videoSpeed={settings.heroVideoSpeed}
+    socialLinks={settings.socialLinks}
+  />
+
+  <div id="tt-page-content">
+    <About photo={settings.aboutPhoto} aboutText={settings.aboutText} />
+    <CompetitionList />
+    <Gallery />
+  </div>
+</BaseLayout>

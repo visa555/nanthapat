@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import settings from "../content/settings.json";
+
+const iconByPlatform: Record<string, string> = {
+  facebook: "fa-facebook-f",
+  youtube: "fa-youtube",
+  dribbble: "fa-dribbble",
+  behance: "fa-behance",
+};
+---
+
+<BaseLayout
+  title="Contact | Nanthapat Itunes"
+  description="ติดต่อน้องไอจูน นันทพัทธ์ อำนาจเกียรติกุล ผ่านอีเมลหรือโซเชียลมีเดีย"
+>
+  <Hero title="Contact" image={settings.heroImage} size="compact" />
+
+  <div id="tt-page-content">
+    <!-- =======================
+			///// Begin tt-section /////
+			============================ -->
+    <div class="tt-section padding-top-xlg-140 padding-bottom-xlg-120">
+      <div class="tt-section-inner tt-wrap max-width-1200">
+        <div class="tt-heading tt-heading-lg tt-heading-center margin-bottom-100">
+          <h2 class="tt-heading-title tt-text-reveal">Get In Touch</h2>
+          <p class="max-width-700 tt-anim-fadeinup text-muted">
+            มีข้อความอยากส่งถึงน้องไอจูน กรอกแบบฟอร์มด้านล่าง หรือติดต่อโดยตรงผ่านช่องทางนี้
+          </p>
+        </div>
+
+        <div class="tt-row margin-bottom-80">
+          <div class="tt-col-lg-6 text-center">
+            <a href={`mailto:${settings.email}`} class="tt-link text-md">{settings.email}</a>
+          </div>
+          {settings.phone && (
+            <div class="tt-col-lg-6 text-center">
+              <a href={`tel:${settings.phone}`} class="tt-link text-md">{settings.phone}</a>
+            </div>
+          )}
+        </div>
+
+        <div class="tt-social-buttons text-center">
+          <ul>
+            {settings.socialLinks.map((link) => (
+              <li>
+                <a href={link.url} class="tt-magnetic-item" target="_blank" rel="noopener">
+                  <i class={`fa-brands ${iconByPlatform[link.platform] ?? "fa-link"}`}></i>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Netlify Forms: no backend needed, Netlify detects this form at deploy time -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="margin-top-80"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden" style="display:none">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div class="tt-row">
+            <div class="tt-col-lg-6 margin-bottom-30">
+              <input type="text" name="name" class="tt-form-control" placeholder="ชื่อ" required />
+            </div>
+            <div class="tt-col-lg-6 margin-bottom-30">
+              <input type="email" name="email" class="tt-form-control" placeholder="อีเมล" required />
+            </div>
+            <div class="tt-col-lg-12 margin-bottom-30">
+              <textarea name="message" class="tt-form-control" placeholder="ข้อความ" rows="5" required></textarea>
+            </div>
+            <div class="tt-col-lg-12">
+              <button type="submit" class="tt-btn tt-btn-outline tt-magnetic-item">
+                <span data-hover="Send Message">Send Message</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.tt-section-inner -->
+    </div>
+    <!-- End tt-section -->
+  </div>
+</BaseLayout>

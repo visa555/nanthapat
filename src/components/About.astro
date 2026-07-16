@@ -1,0 +1,51 @@
+---
+interface Props {
+  photo: string;
+  aboutText: string;
+  ctaHref?: string;
+}
+
+const { photo, aboutText, ctaHref = "/about-me/" } = Astro.props;
+---
+
+<!-- =======================
+	///// Begin tt-section /////
+	============================ -->
+<div class="tt-section padding-top-xlg-140 padding-bottom-xlg-120 border-top">
+  <div class="tt-section-inner tt-wrap">
+    <div class="tt-row">
+      <div class="tt-col-lg-3">
+        <!-- Begin tt-image -->
+        <div class="tt-image tti-border-radius tti-portrait margin-bottom-40">
+          <figure>
+            <img src={photo} class="tt-anim-zoomin" loading="lazy" alt="Image" />
+          </figure>
+        </div>
+        <!-- End tt-image -->
+
+        <div class="tt-text-uppercase margin-top-30 tt-text-reveal">
+          นันทพัทธ์ อำนาจเกียรติกุล<br />
+          Electric Guitar Solo
+        </div>
+      </div>
+      <!-- /.tt-col -->
+
+      <div class="tt-col-lg-1 padding-top-30"></div>
+      <!-- /.tt-col -->
+
+      <div class="tt-col-lg-8 tt-align-self-center">
+        <div class="text-md font-500 tt-text-reveal">
+          {aboutText}
+        </div>
+
+        <a href={ctaHref} class="tt-btn tt-btn-outline margin-top-40 tt-magnetic-item tt-anim-fadeinup">
+          <span data-hover="More About Me">More About Me</span>
+        </a>
+      </div>
+      <!-- /.tt-col -->
+    </div>
+    <!-- /.tt-row -->
+  </div>
+  <!-- /.tt-section-inner -->
+</div>
+<!-- End tt-section -->
