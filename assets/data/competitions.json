@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Thailand Creative Design Awards",
+    "year": 2023,
+    "award": "รางวัลชนะเลิศอันดับ 1",
+    "image": "assets/img/portfolio/800/portfolio-1.jpg"
+  },
+  {
+    "name": "Asia Young Designer Competition",
+    "year": 2022,
+    "award": "เหรียญทอง",
+    "image": "assets/img/portfolio/800/portfolio-2.jpg"
+  },
+  {
+    "name": "National Photography Contest",
+    "year": 2021,
+    "award": "รางวัลรองชนะเลิศอันดับ 1",
+    "image": "assets/img/portfolio/800/portfolio-3.jpg"
+  },
+  {
+    "name": "International Branding Awards",
+    "year": 2024,
+    "award": "รางวัล Best of Show",
+    "image": "assets/img/portfolio/800/portfolio-4.jpg"
+  }
+]
