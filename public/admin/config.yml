@@ -58,6 +58,19 @@ collections:
       - { name: "year", label: "ปี", widget: "number", value_type: "int" }
       - { name: "award", label: "รางวัลที่ได้รับ", widget: "string" }
       - { name: "image", label: "รูปภาพ", widget: "image" }
+      - {
+          name: "content",
+          label: "รายละเอียดเพิ่มเติม",
+          widget: "markdown",
+          required: false,
+        }
+      - {
+          name: "gallery",
+          label: "แกลเลอรีรูปภาพเพิ่มเติม",
+          widget: "list",
+          required: false,
+          field: { name: "image", label: "รูปภาพ", widget: "image" },
+        }
 
   - name: "gallery"
     label: "แกลเลอรี"

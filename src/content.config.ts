@@ -8,6 +8,8 @@ const competitions = defineCollection({
     year: z.number(),
     award: z.string(),
     image: z.string(),
+    content: z.string().optional(),
+    gallery: z.array(z.string()).optional(),
   }),
 });
 
