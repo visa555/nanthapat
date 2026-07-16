@@ -37,7 +37,11 @@ const competitions = (await getCollection("competitions")).sort(
     <div class="tt-portfolio-compact-list pcl-caption-hover pcl-image-hover">
       <div class="pcli-inner">
         {competitions.map((entry) => (
-          <div class="pcli-item tt-anim-fadeinup">
+          <a
+            href={`/competition/${entry.id}/`}
+            class="pcli-item tt-anim-fadeinup"
+            data-cursor="View<br>Details"
+          >
             <div class="pcli-item-inner">
               <div class="pcli-col pcli-col-image">
                 <div class="pcli-image">
@@ -65,7 +69,7 @@ const competitions = (await getCollection("competitions")).sort(
               <!-- /.pcli-col -->
             </div>
             <!-- /.pcli-item-inner -->
-          </div>
+          </a>
         ))}
       </div>
       <!-- /.pcli-inner -->

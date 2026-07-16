@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+
+export async function getStaticPaths() {
+  const competitions = await getCollection("competitions");
+  return competitions.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { name, year, award, image, content, gallery } = entry.data;
+const contentHtml = content ? marked.parse(content) : "";
+---
+
+<BaseLayout
+  title={`${name} | Nanthapat Itunes`}
+  description={`${name} - ปี ${year} - ${award}`}
+  ogImage={image}
+>
+  <Hero title={name} image={image} size="compact" />
+
+  <div id="tt-page-content">
+    <!-- =======================
+			///// Begin tt-section /////
+			============================ -->
+    <div class="tt-section padding-top-xlg-140 padding-bottom-xlg-80">
+      <div class="tt-section-inner tt-wrap max-width-1000">
+        <div class="pcli-categories margin-bottom-40">
+          <div class="pcli-category">{year}</div>
+          <div class="pcli-category">{award}</div>
+        </div>
+
+        {content && <div class="text-md" set:html={contentHtml} />}
+
+        <a
+          href="/#competition"
+          class="tt-btn tt-btn-outline margin-top-40 tt-magnetic-item tt-anim-fadeinup"
+        >
+          <span data-hover="Back to Competitions">Back to Competitions</span>
+        </a>
+      </div>
+      <!-- /.tt-section-inner -->
+    </div>
+    <!-- End tt-section -->
+
+    {gallery && gallery.length > 0 && (
+      <div class="tt-section">
+        <div class="tt-section-inner tt-wrap max-width-1800">
+          <!-- Begin tt-Gallery -->
+          <div class="tt-gallery ttga-hover">
+            <div class="tt-grid ttgr-layout-3 ttgr-gap-2">
+              <div class="tt-grid-items-wrap isotope-items-wrap">
+                {gallery.map((img) => (
+                  <div class="tt-grid-item isotope-item">
+                    <div class="ttgr-item-inner">
+                      <a
+                        href={img}
+                        class="tt-gallery-item"
+                        data-cursor="View"
+                        data-fancybox={`competition-${entry.id}`}
+                      >
+                        <div class="tt-gallery-item-inner">
+                          <div class="tt-gallery-image-wrap tt-anim-zoomin">
+                            <figure class="tt-gallery-image ttgr-height">
+                              <img src={img} loading="lazy" alt="image" />
+                            </figure>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <!-- End tt-Gallery -->
+        </div>
+        <!-- /.tt-section-inner -->
+      </div>
+    )}
+  </div>
+</BaseLayout>
