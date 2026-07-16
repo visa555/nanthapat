@@ -50,7 +50,9 @@ collections:
     label: "รายการแข่งขัน"
     folder: "src/content/competitions"
     create: true
-    slug: "{{year}}-{{slug}}"
+    extension: "json"
+    format: "json"
+    slug: "{{fields.year}}-{{fields.name}}"
     fields:
       - { name: "name", label: "ชื่อรายการ", widget: "string" }
       - { name: "year", label: "ปี", widget: "number", value_type: "int" }
@@ -61,6 +63,9 @@ collections:
     label: "แกลเลอรี"
     folder: "src/content/gallery"
     create: true
+    extension: "json"
+    format: "json"
+    slug: "{{fields.type}}-{{uuid}}"
     fields:
       - {
           name: "type",
