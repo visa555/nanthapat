@@ -74,10 +74,10 @@ collections:
         }
       - {
           name: "gallery",
-          label: "แกลเลอรีรูปภาพเพิ่มเติม",
-          widget: "list",
+          label: "แกลเลอรีรูปภาพเพิ่มเติม (เลือกได้หลายรูปพร้อมกัน)",
+          widget: "image",
+          multiple: true,
           required: false,
-          field: { name: "image", label: "รูปภาพ", widget: "image" },
         }
 
   - name: "gallery"
