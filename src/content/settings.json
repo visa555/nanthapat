@@ -2,7 +2,7 @@
   "heroVideo": "/assets/vids/main.mp4",
   "heroImage": "/assets/sample/main.jpg",
   "aboutPhoto": "/assets/sample/itune-2.jpg",
-  "heroVideoSpeed": 0.75,
+  "heroVideoSpeed": 1,
   "socialLinks": [
     {
       "platform": "facebook",
