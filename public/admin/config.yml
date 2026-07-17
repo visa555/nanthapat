@@ -30,6 +30,14 @@ collections:
               default: 1,
               required: false,
             }
+          - {
+              name: "heroVideoOverlay",
+              label: "ความเข้มของ overlay สีดำทับวิดีโอ (0 = ไม่มี, 10 = เข้มสุด)",
+              widget: "number",
+              value_type: "float",
+              default: 4.5,
+              required: false,
+            }
           - { name: "aboutPhoto", label: "รูปแนะนำตัว", widget: "image" }
           - { name: "aboutText", label: "ข้อความแนะนำตัว", widget: "text" }
           - { name: "email", label: "อีเมล", widget: "string" }
