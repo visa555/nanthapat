@@ -52,7 +52,6 @@ const sizeClass = size === "full" ? "ph-full ph-full-m ph-cap-xxlg" : "ph-cap-lg
       </div>
     </div>
   ) : null}
-  {video && <div class="ph-video-grain" />}
   {video && videoSpeed !== 1 && (
     <script is:inline define:vars={{ videoSpeed }}>
       document.querySelectorAll("#page-header .ph-video video").forEach((v) => {
@@ -118,31 +117,3 @@ const sizeClass = size === "full" ? "ph-full ph-full-m ph-cap-xxlg" : "ph-cap-lg
   )}
 </div>
 <!-- End page header -->
-
-<style>
-  /*
-    Film grain layer for the video hero, sitting as a sibling right after
-    ".ph-video" so it paints on top of the video + darkening overlay
-    (both z-index: -1, later in DOM wins) while staying below the normal-flow
-    caption text. Reuses the same texture/animation as the theme's own
-    ".tt-bg-noise" effect (theme.css) - see ".tt-noise" in CLAUDE.md.
-  */
-  .ph-video-grain {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .ph-video-grain::before {
-    content: "";
-    position: absolute;
-    top: -10rem;
-    left: -10rem;
-    width: calc(100% + 20rem);
-    height: calc(100% + 20rem);
-    background-image: url(/assets/img/bg-noise.png);
-    background-position: 50%;
-    animation: BgNoise 1s steps(2) infinite;
-  }
-</style>
