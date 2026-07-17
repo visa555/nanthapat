@@ -1,18 +1,30 @@
 {
-  "heroTitle": "Nanthapat Itunes",
-  "heroTagline": "Young Electric Guitarist 11-year-old guitarist from Thailand Passionate about Rock & Guitar Hero Gold Medalist • Electric Guitar Solo",
-  "heroImage": "/assets/sample/main.jpg",
   "heroVideo": "/assets/vids/main.mp4",
-  "heroVideoSpeed": 0.75,
-  "heroVideoOverlay": 4.5,
+  "heroImage": "/assets/sample/main.jpg",
   "aboutPhoto": "/assets/sample/itune-2.jpg",
+  "heroVideoSpeed": 0.8,
+  "socialLinks": [
+    {
+      "platform": "facebook",
+      "url": "#"
+    },
+    {
+      "platform": "youtube",
+      "url": "#"
+    },
+    {
+      "platform": "dribbble",
+      "url": "#"
+    },
+    {
+      "platform": "behance",
+      "url": "#"
+    }
+  ],
+  "phone": "",
+  "heroVideoOverlay": 4,
+  "heroTagline": "Young Electric Guitarist 11-year-old guitarist from Thailand Passionate about Rock & Guitar Hero Gold Medalist • Electric Guitar Solo",
   "aboutText": "ยินดีต้อนรับเข้าสู่บล็อกอย่างเป็นทางการของ น้องไอจูน - นันทพัทธ์ อำนาจเกียรติกุล พื้นที่เล็กๆนี้มีไว้สำหรับอัปเดตผลงาน เรื่องราวการฝึกซ้อม และบันทึกการเดินทางบนเส้นทางสายดนตรีของเด็กหญิงวัย 11 ปี จากโรงเรียนทับทอง ผู้มีความหลงใหลในเสียงดนตรีและมาพร้อมกับรอยยิ้มอารมณ์ดีอันเป็นเอกลักษณ์ ถ้าคุณเป็นคนที่ชอบเสียงดนตรี มาร่วมเป็นกำลังใจและเติบโตไปพร้อมกับน้องไอจูนกันนะครับ!",
   "email": "contact@nanthapat.com",
-  "phone": "",
-  "socialLinks": [
-    { "platform": "facebook", "url": "#" },
-    { "platform": "youtube", "url": "#" },
-    { "platform": "dribbble", "url": "#" },
-    { "platform": "behance", "url": "#" }
-  ]
+  "heroTitle": "Nanthapat Itunes"
 }
